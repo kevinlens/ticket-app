@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
+import 'primereact/resources/themes/lara-light-cyan/theme.css';
+import { Dropdown } from 'primereact/dropdown';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 const EditTicket = () => {
+  const [status, setStatus] = useState({ name: 'Open', code: 1 });
+  const statuses = [
+    { name: 'Open', code: 1 },
+    { name: 'In Progress', code: 2 },
+    { name: 'Resolved', code: 3 },
+  ];
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [summary, setSummary] = useState('');
@@ -22,6 +30,7 @@ const EditTicket = () => {
         setName(response.data.name);
         setEmail(response.data.email);
         setSummary(response.data.summary);
+        setStatus(response.data.status);
         setLoading(false);
       })
       .catch((error) => {
@@ -36,7 +45,9 @@ const EditTicket = () => {
       name,
       email,
       summary,
+      status,
     };
+    console.log(data);
     setLoading(true);
     axios
       .put(`https://ticket-app-backend-psi.vercel.app/tickets/${id}`, data)
@@ -85,6 +96,17 @@ const EditTicket = () => {
             className='border-2 border-gray-500 px-4 py-2  w-full'
           />
         </div>
+
+        <h1 className='m-auto'>Status</h1>
+        <Dropdown
+          value={status}
+          onChange={(e) => setStatus(e.value)}
+          options={statuses}
+          optionLabel='name'
+          placeholder='Unknown Status'
+          className='w-38 border-2 border-cyan-400 m-auto'
+        />
+
         <button className='p-2 bg-sky-300 m-8' onClick={handleEditTicket}>
           Save
         </button>
