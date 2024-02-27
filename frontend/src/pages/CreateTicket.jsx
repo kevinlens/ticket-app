@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import BackButton from '../components/BackButton';
+import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -37,8 +38,10 @@ const CreateTicket = () => {
 
   return (
     <div className='p-4'>
-      <BackButton />
-      <h1 className='text-3xl my-4'>Create Ticket</h1>
+      <Link to={'/'} className='bg-sky-800 text-white px-8 py-4 rounded-lg w-fit'>
+        Admin Login
+      </Link>
+      <h1 className='text-3xl my-4 text-center'>Create Ticket</h1>
       {loading ? <Spinner /> : ''}
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
         <div className='my-4'>
@@ -60,8 +63,8 @@ const CreateTicket = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Summary</label>
-          <input
+          <label className='text-xl mr-4 text-gray-500'>Summary of Issue</label>
+          <textarea
             type='text'
             value={summary}
             onChange={(e) => setSummary(e.target.value)}

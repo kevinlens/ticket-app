@@ -28,27 +28,38 @@ const Home = () => {
 
   return (
     <div className='p-4'>
-      <div className='flex justify-center items-center gap-x-4'>
-        <button
-          onClick={() => setShowType('table')}
-          className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
-        >
-          Table
-        </button>
-        <button
-          onClick={() => setShowType('card')}
-          className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
-        >
-          Card
-        </button>
+      <div className='flex justify-between'>
+        <div>
+          <button
+            onClick={() => setShowType('table')}
+            className='bg-sky-300 hover:bg-sky-600 px-4 py-1 mr-4 rounded-lg'
+          >
+            Table Layout
+          </button>
+          <button
+            onClick={() => setShowType('card')}
+            className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
+          >
+            Card Layout
+          </button>
+        </div>
+        <div className='flex items-center'>
+          <h2 className='text-xl'>Create Ticket</h2>
+          <Link to='/ticket/create'>
+            <MdOutlineAddBox className='text-sky-800 ml-2 text-4xl' />
+          </Link>
+        </div>
       </div>
       <div className='flex justify-center items-center'>
-        <h1 className='text-3xl my-8'>Tickets</h1>
-        <Link to='/ticket/create'>
-          <MdOutlineAddBox className='text-sky-800 text-4xl' />
-        </Link>
+        <h1 className='text-3xl my-8'>Tickets Dashboard</h1>
       </div>
-      {loading ? <Spinner /> : showType === 'table' ? <TicketsTable tickets={tickets}/> : <TicketsCard  tickets={tickets}/>}
+      {loading ? (
+        <Spinner />
+      ) : showType === 'table' ? (
+        <TicketsTable tickets={tickets} />
+      ) : (
+        <TicketsCard tickets={tickets} />
+      )}
     </div>
   );
 };
