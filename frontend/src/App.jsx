@@ -9,8 +9,8 @@ import ReplyToTicket from './pages/ReplyToTicket'
 const App = () => {
   return (
     <Routes>
-      <Route path='/ticket/create' element={<CreateTicket />} />
-      <Route path='/' element={<Home />}></Route>
+      <Route path='/' element={<CreateTicket />}></Route>
+      <Route path='/ticket/create' element={<Home />} />
       <Route path='/ticket/details/:id' element={<ShowTicket />} />
       <Route path='/ticket/reply/:id' element={<ReplyToTicket />} />
       <Route path='/ticket/edit/:id' element={<EditTicket />} />

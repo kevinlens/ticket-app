@@ -10,6 +10,7 @@ const CreateTicket = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [summary, setSummary] = useState('');
+  const status = 'Open'
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -19,6 +20,7 @@ const CreateTicket = () => {
       name,
       email,
       summary,
+      status,
     };
     setLoading(true);
     axios
@@ -26,7 +28,7 @@ const CreateTicket = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Ticket Created', { variant: 'success' });
-        navigate('/');
+        navigate('/ticket/create');
       })
       .catch((error) => {
         setLoading(false);
@@ -38,10 +40,13 @@ const CreateTicket = () => {
 
   return (
     <div className='p-4'>
-      <Link to={'/'} className='bg-sky-800 text-white px-8 py-4 rounded-lg w-fit'>
+      <Link
+        to={'/ticket/create'}
+        className='bg-sky-800 text-white px-8 py-4 rounded-lg w-fit'
+      >
         Admin Login
       </Link>
-      <h1 className='text-3xl my-4 text-center'>Create Ticket</h1>
+      <h1 className='text-3xl my-4 text-center'>New Ticket</h1>
       {loading ? <Spinner /> : ''}
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
         <div className='my-4'>
@@ -72,7 +77,7 @@ const CreateTicket = () => {
           />
         </div>
         <button className='p-2 bg-sky-300 m-8' onClick={handleSaveTicket}>
-          Save
+          Create Ticket
         </button>
       </div>
     </div>

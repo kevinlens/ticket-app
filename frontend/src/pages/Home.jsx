@@ -26,6 +26,7 @@ const Home = () => {
       });
   }, []);
 
+
   return (
     <div className='p-4'>
       <div className='flex justify-between'>
@@ -45,7 +46,7 @@ const Home = () => {
         </div>
         <div className='flex items-center'>
           <h2 className='text-xl'>Create Ticket</h2>
-          <Link to='/ticket/create'>
+          <Link to='/'>
             <MdOutlineAddBox className='text-sky-800 ml-2 text-4xl' />
           </Link>
         </div>

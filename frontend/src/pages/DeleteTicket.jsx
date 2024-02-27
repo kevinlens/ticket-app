@@ -17,7 +17,7 @@ const DeleteTicket = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Ticket Deleted', { variant: 'success' });
-        navigate('/');
+        navigate('/ticket/create');
       })
       .catch((error) => {
         setLoading(false);

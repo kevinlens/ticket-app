@@ -43,7 +43,7 @@ const EditTicket = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Ticket Successfully Edited', { variant: 'success' });
-        navigate('/');
+        navigate('/ticket/create');
       })
       .catch((error) => {
         setLoading(false);
