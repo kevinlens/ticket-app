@@ -47,7 +47,6 @@ const EditTicket = () => {
       summary,
       status,
     };
-    console.log(data);
     setLoading(true);
     axios
       .put(`https://ticket-app-backend-psi.vercel.app/tickets/${id}`, data)
