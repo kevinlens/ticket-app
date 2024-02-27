@@ -13,7 +13,7 @@ const DeleteTicket = () => {
   const handleDeleteTicket = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:5555/tickets/${id}`)
+      .delete(`https://ticket-app-backend-psi.vercel.app/tickets/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Ticket Deleted', { variant: 'success' });

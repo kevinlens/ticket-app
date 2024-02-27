@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/tickets')
+      .get('https://ticket-app-backend-psi.vercel.app/tickets')
       .then((response) => {
         setTickets(response.data.data);
         setLoading(false);

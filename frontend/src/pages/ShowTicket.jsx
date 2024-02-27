@@ -12,7 +12,7 @@ const ShowTicket = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/tickets/${id}`)
+      .get(`https://ticket-app-backend-psi.vercel.app/tickets/${id}`)
       .then((response) => {
         setTicket(response.data);
         setLoading(false);

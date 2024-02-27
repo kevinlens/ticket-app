@@ -17,7 +17,7 @@ const EditTicket = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/tickets/${id}`)
+      .get(`https://ticket-app-backend-psi.vercel.app/tickets/${id}`)
       .then((response) => {
         setName(response.data.name);
         setEmail(response.data.email);
@@ -39,7 +39,7 @@ const EditTicket = () => {
     };
     setLoading(true);
     axios
-      .put(`http://localhost:5555/tickets/${id}`, data)
+      .put(`https://ticket-app-backend-psi.vercel.app/tickets/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Ticket Successfully Edited', { variant: 'success' });

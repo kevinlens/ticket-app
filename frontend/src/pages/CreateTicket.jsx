@@ -21,7 +21,7 @@ const CreateTicket = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/tickets', data)
+      .post('https://ticket-app-backend-psi.vercel.app/tickets', data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Ticket Created', { variant: 'success' });
