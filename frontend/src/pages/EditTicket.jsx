@@ -8,7 +8,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 const EditTicket = () => {
-  const [status, setStatus] = useState({ name: 'Open', code: 1 });
+  const [statusData, setStatusData] = useState('');
+  const status = statusData.name;
   const statuses = [
     { name: 'Open', code: 1 },
     { name: 'In Progress', code: 2 },
@@ -30,7 +31,7 @@ const EditTicket = () => {
         setName(response.data.name);
         setEmail(response.data.email);
         setSummary(response.data.summary);
-        setStatus(response.data.status);
+        setStatusData(statuses.find(status => status.name === response.data.status));
         setLoading(false);
       })
       .catch((error) => {
@@ -47,6 +48,7 @@ const EditTicket = () => {
       summary,
       status,
     };
+    console.log(status);
     setLoading(true);
     axios
       .put(`https://ticket-app-backend-psi.vercel.app/tickets/${id}`, data)
@@ -98,9 +100,9 @@ const EditTicket = () => {
 
         <h1 className='m-auto'>Status</h1>
         <Dropdown
-          value={status}
-          onChange={(e) => setStatus(e.value)}
-          options={statuses}
+          value={statusData}
+          onChange={(e) => setStatusData(e.value)}
+          options={statuses} 
           optionLabel='name'
           placeholder='Unknown Status'
           className='w-38 border-2 border-cyan-400 m-auto'

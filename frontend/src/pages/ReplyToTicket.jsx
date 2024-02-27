@@ -27,7 +27,9 @@ const ReplyToTicket = () => {
       });
   }, []);
 
-  const handleReplyToTicket = () => {};
+  const handleReplyToTicket = () => {
+    alert('“Would normally send email here with body:...');
+  };
 
   return (
     <div className='p-4'>
