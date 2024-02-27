@@ -28,7 +28,7 @@ const CreateTicket = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Ticket Created', { variant: 'success' });
-        navigate('/ticket/create');
+        navigate('/');
       })
       .catch((error) => {
         setLoading(false);
