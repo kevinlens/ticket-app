@@ -15,6 +15,7 @@ router.post('/', async (request, response) => {
       name: request.body.name,
       email: request.body.email,
       summary: request.body.summary,
+      status: request.body.status,
     };
     const ticket = await Ticket.create(newTicket);
 
